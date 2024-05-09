@@ -4,7 +4,10 @@ const doctorRouter = require('./routes/doctorRoutes');
 const userRouter = require('./routes/userRoutes');
 const app = express();
 
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(express.json());
 
 const AppError = require('./utils/appError');

@@ -1,7 +1,10 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
 const app = require('./app');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const port = 3001;
+
+const port = process.env.PORT || 3001;
 
 mongoose
   .connect('mongodb://127.0.0.1:27017/hackathon')

@@ -1,14 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('./../controller/userController');
-const check = (req, res, next) => {
-  console.log('Router is called');
-  next();
-};
+const authController = require('./../controller/authContoller');
+
+router.post('/signup', authController.signup);
+
+router.post('/login', authController.login);
+
+router.use(authController.protect);
+// router.use(authController.restrictTo('admin'));
+
 router
   .route('/')
   .get(userController.getAllUser)
-  .post(check, userController.createUser);
+  .post(userController.createUser);
 
 router
   .route('/:id')
