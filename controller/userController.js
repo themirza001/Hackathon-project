@@ -1,6 +1,7 @@
 const User = require('./../model/userModel');
 const APIFeatures = require('./../utils/apiFeatures');
 const catchAsync = require('./../utils/catchAsync');
+const Review = require('./../model/reviewModel');
 
 exports.createUser = catchAsync(async (req, res) => {
   const user = await User.create(req.body);
@@ -61,3 +62,5 @@ exports.UpdateOneUser = catchAsync(async (req, res) => {
     },
   });
 });
+
+exports.get;
