@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const doctorRouter = require('./routes/doctorRoutes');
 const userRouter = require('./routes/userRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
+
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
@@ -15,6 +17,7 @@ const globalErrorHandler = require('./controller/errorController');
 
 app.use('/api/v1/doctors', doctorRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
 
 app.all('*', (req, res, next) => {
   console.log('generic Function is called');

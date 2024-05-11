@@ -33,7 +33,7 @@ exports.getAllDoctor = catchAsync(async (req, res) => {
 });
 
 exports.getDoctor = catchAsync(async (req, res) => {
-  const doctor = await Doctor.findById(req.params.id);
+  const doctor = await Doctor.findById(req.params.id).populate('reviews');
   res.status(201).json({
     status: 'success',
     data: {

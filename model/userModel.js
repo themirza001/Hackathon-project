@@ -37,6 +37,12 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: Number,
   },
+  doctors: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Doctor',
+    },
+  ],
   insurance: String,
   medicalHistory: [String],
   allergies: [String],
@@ -63,7 +69,13 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
-
+userSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'doctors',
+    select: 'name experience clinicName',
+  });
+  next();
+});
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

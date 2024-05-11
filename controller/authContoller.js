@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
 const AppError = require('./../utils/appError');
+
 const signInToken = (id) => {
   console.log('Trying to create Signin Token');
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -115,6 +116,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // GRANT ACCESS TO PROTECTED ROUTE
   req.user = currentUser;
+  console.log(decoded.id);
   next();
 });
 
