@@ -5,7 +5,8 @@ const doctorSchema = new mongoose.Schema(
   {
     image: {
       type: String,
-      required: true,
+      default:
+        'https://tse3.mm.bing.net/th?id=OIP.LczXdrMkR1M0DA0Q6diejQHaIH&pid=Api&P=0&h=180',
     },
     name: {
       type: String,
@@ -13,13 +14,13 @@ const doctorSchema = new mongoose.Schema(
     },
     experience: {
       type: Number,
-      required: true,
+      // required: true,
     },
     password: {
       type: String,
       required: [true, 'Please Enter ur Password'],
-      minlength: 8,
-      maxlength: 12,
+      // minlength: 8,
+      // maxlength: 12,
     },
     confirmPassWord: {
       type: String,
@@ -32,13 +33,13 @@ const doctorSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, 'a Doctor Must Have a Email'],
+      //required: [true, 'a Doctor Must Have a Email'],
       unique: true,
       validate: [validator.isEmail, 'Please provide valid Email'],
     },
     address: {
       type: String,
-      required: true,
+      // required: true,
     },
     clinicName: {
       type: String,
@@ -46,7 +47,7 @@ const doctorSchema = new mongoose.Schema(
     },
     consultationFee: {
       type: Number,
-      required: true,
+      // required: true,
     },
     rating: {
       type: Number,
@@ -54,58 +55,58 @@ const doctorSchema = new mongoose.Schema(
     },
     isAvailable: {
       type: Boolean,
-      required: true,
+      // required: true,
+      default: true,
     },
     degree: {
       type: String,
-      required: true,
+      // required: true,
     },
     isVerified: {
       type: Boolean,
-      required: true,
+      // required: true,
     },
     modeOfAppointment: {
       type: String,
-      required: true,
+      // required: true,
     },
     summary: {
       type: String,
-      required: true,
+      // required: true,
     },
     workingDays: {
       type: [String],
-      required: true,
+      default: 'Monday to Saturday',
     },
     workingTime: {
       type: String,
-      required: true,
     },
     specialization: {
       type: [String],
-      required: true,
+      //required: true,
     },
     gender: {
       type: String,
-      required: true,
+      //required: true,
       enum: ['Male', 'Female', 'Other'],
     },
     registrationNumber: {
       type: String,
-      required: true,
-      minlength: 20,
-      maxlength: 20,
+      //required: true,
+      // minlength: 20,
+      // maxlength: 20,
     },
     registrationCouncil: {
       type: String,
-      required: true,
+      // required: true,
     },
     registrationYear: {
       type: Number,
-      required: true,
+      // required: true,
     },
     college: {
       type: String,
-      required: true,
+      // required: true,
     },
     userReviews: [
       {
