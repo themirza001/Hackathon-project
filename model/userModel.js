@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
   },
   dob: {
     type: Date,
-    required: [true, 'Please Enter Your Age'],
+    // required: [true, 'Please Enter Your Age'],
   },
   phone: {
     type: Number,
