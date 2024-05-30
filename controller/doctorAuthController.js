@@ -80,10 +80,18 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!doctor || !(await doctor.correctPassword(password, doctor.password))) {
     return next(new AppError('Incorrect email or password', 401));
   }
-
+  console.log('hello from doctor side');
   // 3) If everything ok, send token to client
   createSendToken(doctor, 200, res);
 });
+
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check if it's there

@@ -8,6 +8,8 @@ router.post('/signup', doctorAuthController.signup);
 
 router.post('/login', doctorAuthController.login);
 
+router.post('/logout', doctorAuthController.logout);
+
 router.post('/forgotPassword', doctorAuthController.forgotPassword);
 
 router.patch('/resetPassword/:token', doctorAuthController.resetPassword);
