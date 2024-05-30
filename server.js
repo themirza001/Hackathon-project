@@ -7,7 +7,7 @@ const cors = require('cors');
 const port = process.env.PORT || 3001;
 
 mongoose
-  .connect('mongodb://127.0.0.1:27017/hackathon')
+  .connect('mongodb+srv://sd626312:ymXRxfUYbZS8Roeh@cluster0.3mtqxiw.mongodb.net/hackathon')
   .then((con) => console.log(`DB Connection is successul`));
 
 // Allow requests from all origins

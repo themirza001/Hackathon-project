@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   address: String,
   password: {
     type: String,
-    required: [true, 'Please Enter Your Password'],
+    //required: [false, 'Please Enter Your Password'],
     minlength: 8,
     select: false,
   },
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
   },
   dob: {
     type: Date,
-    // required: [true, 'Please Enter Your Age'],
+   // required: [true, 'Please Enter Your Age'],
   },
   phone: {
     type: Number,
@@ -116,13 +116,13 @@ userSchema.methods.createPasswordResetToken = function () {
   return resetToken;
 };
 
-userSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'doctors',
-    select: 'name experience clinicName',
-  });
-  next();
-});
+// userSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'doctors',
+//     select: 'name experience clinicName',
+//   });
+//   next();
+// });
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
