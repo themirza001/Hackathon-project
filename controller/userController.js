@@ -102,5 +102,3 @@ exports.UpdateOneUser = catchAsync(async (req, res) => {
     },
   });
 });
-
-exports.get;

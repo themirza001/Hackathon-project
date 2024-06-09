@@ -11,13 +11,14 @@ const cookieParser = require('cookie-parser');
 const doctorRouter = require('./routes/doctorRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
+const medicineRouter = require('./routes/medicineRoutes');
 
 const app = express();
 const corsOptions = {
   origin: 'http://localhost:5173', // Frontend URL
-  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-app.options('*',cors());
+app.options('*', cors());
 app.use(cors(corsOptions));
 
 app.use(cookieParser());
@@ -58,6 +59,7 @@ const globalErrorHandler = require('./controller/errorController');
 app.use('/api/v1/doctors', doctorRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/medicine', medicineRouter);
 
 app.all('*', (req, res, next) => {
   console.log('generic Function is called');
